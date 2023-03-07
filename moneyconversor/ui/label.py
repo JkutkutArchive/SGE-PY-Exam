@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/02 14:11:45 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/07 10:12:33 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/07 10:34:08 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,3 +34,7 @@ class TitleLabel(Label):
 class SubTitleLabel(Label):
     def __init__(self, window, text):
         super().__init__(window, text, STYLE.SUBTITLE_TEXT_SIZE)
+
+class NormalLabel(Label):
+    def __init__(self, window, text):
+        super().__init__(window, text, STYLE.NORMAL_TEXT_SIZE)

@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/07 09:56:07 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/07 10:17:08 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/07 10:34:36 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,3 +27,4 @@ class ConversorStyle:
     FONT = 'Arial'
     TITLE_TEXT_SIZE = 25
     SUBTITLE_TEXT_SIZE = 20
+    NORMAL_TEXT_SIZE = 15

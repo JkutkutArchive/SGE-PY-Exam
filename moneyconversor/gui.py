@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/07 10:00:56 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/07 10:25:07 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/07 10:36:11 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ import pathlib
 from moneyconversor.style import ConversorStyle as STYLE
 
 from moneyconversor.ui.textfield import TextField
-from moneyconversor.ui.label import TitleLabel, SubTitleLabel
+from moneyconversor.ui.label import TitleLabel, SubTitleLabel, NormalLabel
 from moneyconversor.ui.radiobutton import Radiobutton
 from moneyconversor.ui.checkbutton import Checkbutton
 from moneyconversor.ui.button import Button
@@ -33,8 +33,8 @@ class MoneyConversorGUI:
     _TITLE = "Conversor Euro – Dólar USA"
     _TITLE_LABEL = "Conversión de divisas Euro - Dólar USA"
 
-    _WIDTH = 850
-    _HEIGHT = 600
+    _WIDTH = 750
+    _HEIGHT = 450
     _GEOMETRY = f"{_WIDTH}x{_HEIGHT}+0+0" # TODO
     _GEOMETRY = f"{_WIDTH}x{_HEIGHT}+1500+0"
     _MIN_SIZE = (_WIDTH, _HEIGHT)
@@ -106,7 +106,39 @@ class MoneyConversorGUI:
         self._canvas.create_image(0,0, anchor=tkinter.NW, image = self._img)
 
     def _init_money_txtbox(self) -> None:
-        pass
+        self._data_container = tkinter.Frame(
+            self.window,
+            bg = STYLE.BG
+        )
+        self._data_container.pack(
+            fill = tkinter.X,
+            pady = STYLE.NORMAL_MARGIN
+        )
+        # Section label
+        SubTitleLabel(
+            self._data_container,
+            text = "Cantidad a convertir"
+        ).pack(
+            anchor = tkinter.NW
+        )
+        self._data_containers = []
+        self._data_containers.append(tkinter.Frame(
+            self._data_container,
+            bg = STYLE.BG
+        ))
+        self._data_containers[-1].pack(
+            fill = tkinter.X,
+            pady = STYLE.NORMAL_MARGIN
+        )
+        self._txtf_money = TextField(
+            self._data_containers[-1],
+            hint = "Cantidad"
+        )
+        self._txtf_money.pack(
+            side = tkinter.LEFT,
+            padx = STYLE.NORMAL_MARGIN
+        )
+
     def _init_conversion_type(self) -> None:
         self._conversion_type_container = tkinter.Frame(
             self.window,
@@ -147,8 +179,33 @@ class MoneyConversorGUI:
                 side = tkinter.LEFT,
                 padx = STYLE.NORMAL_MARGIN
             )
+
     def _init_submmit(self) -> None:
-        pass
+        self.btn_submit = Button(
+            self.window,
+            text = "Convertir"
+        )
+        self.btn_submit.pack(
+            fill = tkinter.X,
+            padx = STYLE.NORMAL_MARGIN
+        )
+        SubTitleLabel(
+            self.window,
+            text = "Valor de la conversión:"
+        ).pack(
+            anchor = tkinter.NW,
+            pady = STYLE.NORMAL_MARGIN
+        )
+        self._result_label = NormalLabel(
+            self.window,
+            text = "TODO TODO TODO TODO"
+        )
+        self._result_label.pack(
+            anchor = tkinter.NW,
+            padx = STYLE.NORMAL_MARGIN,
+            pady = STYLE.NORMAL_MARGIN
+        )
+
 
     def run(self) -> None:
         self.w.mainloop()
