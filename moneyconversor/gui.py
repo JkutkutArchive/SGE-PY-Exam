@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/07 10:00:56 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/07 11:00:07 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/07 11:06:04 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,7 @@ class MoneyConversorGUI:
 
     _WIDTH = 750
     _HEIGHT = 450
-    _GEOMETRY = f"{_WIDTH}x{_HEIGHT}+0+0" # TODO
-    _GEOMETRY = f"{_WIDTH}x{_HEIGHT}+1500+0"
+    _GEOMETRY = f"{_WIDTH}x{_HEIGHT}+0+0"
     _MIN_SIZE = (_WIDTH, _HEIGHT)
     _MAX_SIZE = (_WIDTH, _HEIGHT)
 
@@ -44,9 +43,6 @@ class MoneyConversorGUI:
         self._window = tkinter.Tk()
         self._config_window()
         self._init_components()
-
-        # TODO debug
-        # self.w.bind("<FocusOut>", lambda e : exit())
 
     def _config_window(self):
         self.w.title(self._TITLE)
