@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/07 10:00:56 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/07 10:36:11 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/07 11:00:07 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ class MoneyConversorGUI:
         self._init_components()
 
         # TODO debug
-        self.w.bind("<FocusOut>", lambda e : exit())
+        # self.w.bind("<FocusOut>", lambda e : exit())
 
     def _config_window(self):
         self.w.title(self._TITLE)
@@ -198,7 +198,7 @@ class MoneyConversorGUI:
         )
         self._result_label = NormalLabel(
             self.window,
-            text = "TODO TODO TODO TODO"
+            text = ""
         )
         self._result_label.pack(
             anchor = tkinter.NW,
@@ -226,3 +226,22 @@ class MoneyConversorGUI:
     @property
     def w(self):
         return self._window
+
+    @property
+    def conversion_type(self) -> int | None:
+        t = self._rbtns_value.get()
+        return None if t == '' else int(t)
+
+    @property
+    def money(self) -> str:
+        return self._txtf_money.get().strip()
+
+    def convert(self, m: float, conversion_type: int, e: float) -> None:
+        if conversion_type == self.D_2_E:
+            icoin = "$"
+            fcoin = "€"
+        else:
+            icoin = "€"
+            fcoin = "$"
+        result = f"{m}{icoin} son {e}{fcoin}"
+        self._result_label.config(text = result)
