@@ -9,7 +9,7 @@
 #    By: Jkutkut  https://github.com/jkutkut              /:::::::::::::\      #
 #                                                        /:::::::::::::::\     #
 #    Created: 2023/03/07 10:15:13 by Jkutkut            /:::===========:::\    #
-#    Updated: 2023/03/07 10:58:36 by Jkutkut            '-----------------'    #
+#    Updated: 2023/03/07 11:02:15 by Jkutkut            '-----------------'    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,12 @@ class MoneyConversorApp:
         self._gui.btn_submit.config(command = self._submmit)
 
     def _submmit(self) -> None:
+        money = self.get_money()
+        if not money:
+            return
         conversion_type = self._gui.conversion_type
         if conversion_type == None:
             self.error("Tipo conversión", "Selecciona un tipo de conversión.")
-            return
-        money = self.get_money()
-        if not money:
             return
         fts = [
             lambda d: d * 0.947983,
